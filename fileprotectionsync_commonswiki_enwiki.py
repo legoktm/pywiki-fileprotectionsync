@@ -22,10 +22,10 @@ config_data = [
               # ],
                 [
                   u'en.wikipedia.org',
-                  u'User:Δ',
-                  [u'Main Page',u'Wikipedia:Main Page/Tomorrow']
-                  ,u'<noinclude>This is an automatically compiled / updated gallery of images used on [[:en:Main Page]] and [[:en:Wikipedia:Main Page/Tomorrow]] </noinclude>as of \'\'\'{{ISOdate|{{REVISIONYEAR}}-{{REVISIONMONTH}}-{{REVISIONDAY2}}}}\'\'\'<noinclude>. Please do not manually alter the image list.</noinclude><gallery widths="245" heights="147">\n'
-                  u'Sync. cascading protection of en.wikipedia.org main page (BOT - r12)',
+                  u'Commons:Sandbox',
+                  [u'Main Page',u'Wikipedia:Main Page/Tomorrow'],
+                  u'<noinclude>This is an automatically compiled / updated gallery of images used on [[:en:Main Page]] and [[:en:Wikipedia:Main Page/Tomorrow]] </noinclude>as of \'\'\'{{ISOdate|{{REVISIONYEAR}}-{{REVISIONMONTH}}-{{REVISIONDAY2}}}}\'\'\'<noinclude>. Please do not manually alter the image list.</noinclude><gallery widths="245" heights="147">\n',
+                  u'Sync. cascading protection of en.wikipedia.org main page (BOT - r12)'
                 ],
               ]
 
