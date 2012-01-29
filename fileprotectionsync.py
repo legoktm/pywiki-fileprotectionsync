@@ -15,18 +15,20 @@ import simplejson
 commons_site = wikipedia.getSite('commons','commons')
 config_data = {
   'summary': u'Update [[Commons:Auto-protected files|auto-protection]] (BOT - r15)',
-  'text_start': u'{{Auto-protected files gallery}}<gallery widths="245" heights="147">\n',
+  'text_start': u'{{Auto-protected files gallery}}<gallery widths="50" heights="30">\n',
   'text_end': u'</gallery>'
 }
 config_wikis = [
   {
     'sourcewiki': u'en.wikipedia.org',
     'sourcepages': [u'Main Page',u'Wikipedia:Main Page/Tomorrow'],
+#    'targetpage': u'Commons:Auto-protected files/wikipedia/en',
     'targetpage': u'Commons:Sandbox',
   },
   {
     'sourcewiki': u'zh.wikipedia.org',
     'sourcepages': [u'Wikipedia:首页',u'Wikipedia:首页/明天'],
+#    'targetpage': u'Commons:Auto-protected files/wikipedia/zh',
     'targetpage': u'Commons:Sandbox',
   },
 ]
