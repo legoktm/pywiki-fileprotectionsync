@@ -22,11 +22,13 @@ config_wikis = [
   {
     'sourcewiki': u'en.wikipedia.org',
     'sourcepages': [u'Main Page',u'Wikipedia:Main Page/Tomorrow'],
+#    'targetpage': u'Commons:Auto-protected files/wikipedia/en',
     'targetpage': u'Commons:Sandbox',
   },
 #  {
 #    'sourcewiki': u'zh.wikipedia.org',
-#    'sourcepages': [u'Wikipedia:首页',u'Wikipedia:首页/明天'],
+#    'sourcepages': [u'Wikipedia:首页/全部',u'Wikipedia:首页/明天'],
+##    'targetpage': u'Commons:Auto-protected files/wikipedia/zh',
 #    'targetpage': u'Commons:Sandbox',
 #  },
 ]
