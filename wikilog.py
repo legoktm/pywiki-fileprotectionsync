@@ -7,7 +7,7 @@
 #
 # Distributed under the terms of the MIT license.
 #
-import pywikipedia.wikipedia
+import wikipedia
 import datetime
 
 # CHANGE THESE SETTINGS TO FIT YOUR OWN
