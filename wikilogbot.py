@@ -1,9 +1,11 @@
 # Script to log messages to a wikipage from IRC
-# For help on installing, check README.
+# For help on installing, check README
+# version 1.0.2
+# 
+# (C) Krinkle, 2010-2012
+# (C) Pywikipedia bot team, 2003-2010
 #
-# @version 1.1.0 (2011-10-02)
-# @copyright Krinkle, 2010-2011
-# @license Distributed under the terms of the MIT license.
+# Distributed under the terms of the MIT license.
 #
 from ircbot import SingleServerIRCBot
 from irclib import nm_to_n, nm_to_h, irc_lower, ip_numstr_to_quad, ip_quad_to_numstr
@@ -52,13 +54,13 @@ class LogBot(SingleServerIRCBot):
 				undef,message=line.split(" ",1);
 				try:
 					wikilog.log(message,author)
-					c.privmsg(e.target(),"Logged the message, "+author+".")
+					c.privmsg(e.target(),"Logged the message ( http://bit.ly/clogger ), "+author+".")
 				except: c.privmsg(e.target(),"I failed :(")
 			elif line.startswith("!rights "):
 				undef,message=line.split(" ",1);
 				try:
 					wikilog.rights(message,author)
-					c.privmsg(e.target(),"Rights log has been updated, "+author+".")
+					c.privmsg(e.target(),"Rights log ( http://bit.ly/rightslog ) has been updated, "+author+".")
 				except: c.privmsg(e.target(),"I failed :(")
 			elif line.startswith("!disconnect"):
 				 self.disconnect()
@@ -90,9 +92,9 @@ def main():
 	nickname=u"wikilogbot"
 	nickserv=u"NickServ"
 	initialstatus=u"All OK!"
-	msgs_help=u"This is the default !help message."
-	info_help=u"This is the default !info message."
-	nickservpassword=u"**********"
+	msgs_help=u"Give right: {{Right given|NickServname|Wikiname|rightstemplate|channel|diffid=000}} | Remove right: {{Right removed|NickServname|Wikiname|rightstemplate|channel|comment=Reason here}} (see !info for useful links)"
+	info_help=u"Mailing list (*new*): http://bit.ly/cvnLatest / http://bit.ly/cvnMonth | Subscribe: https://lists.wikimedia.org/mailman/listinfo/cvn | Server admin Log: http://bit.ly/clogger | Rights log: http://bit.ly/rightslog | Toolserver: http://toolserver.org/~cvn/"
+	nickservpassword=u"*******"
 	bot = LogBot(joinchannels, nickname, server, port, nickserv, nickservpassword, initialstatus, msgs_help, info_help)
 	bot.start()
 

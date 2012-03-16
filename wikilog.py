@@ -10,9 +10,11 @@
 import wikipedia
 import datetime
 
-site=wikipedia.getSite('en','cvnwiki')
-logname=u"Developer_Log"
-rightsname=u"Rights_Log"
+# CHANGE THESE SETTINGS TO FIT YOUR OWN
+# @todo Turn these into arguments instead (--wikilog-site, --wikilog-logpagename --wikilog--rightspagename)
+site=wikipedia.getSite('en','samplewiki')
+logname=u"Server_admin_log"
+rightsname=u"Rights_log"
 
 months=["January","February","March","April","May","June","July","August","September","October","November","December"]
 

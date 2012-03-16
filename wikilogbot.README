@@ -1,4 +1,4 @@
-README for wikilogbot.py version 1.0.1
+README for wikilogbot.py version 1.0.2
 
 This script uses the wikipedia module from Pywikipedia.
 Make sure the wiki you want to log the messages to is defined as
@@ -24,10 +24,10 @@ This is the server to connect to to recieve commands
 - port=6667
 The port, this is almost always the same
 
-- joinchannels=["#channelone","#channeltwo"]
+- joinchannels=["#botwar"]
 Which channels to join. In these channels it will be listening to commands from voiced and/or opped users.
 
-- nickname=u"myusername"
+- nickname=u"wikilogbot"
 Nickname used to connect to the server. Also used to identify with.
 
 - nickserv=u"NickServ"
@@ -40,10 +40,10 @@ Password to identify with nickserv.
 The default status for "!status" command after a reboot.
 
 # wikilog.py
-This file is imported by wikilog.py and is used to save messages to the wiki.
+This file is imported by wikilogbot.py and is used to save messages to the wiki.
 Settings are on *top* of the wikilog.py file (under the 'import' section):
 
-- site=wikipedia.getSite('en','myfamily')
+- site=wikipedia.getSite('en','samplewiki')
 As mentioned before, this script uses the wikipedia module. Make sure the family
 is defined.
 Example values:
@@ -52,7 +52,7 @@ Example values:
 		site=wikipedia.getSite('en','mycustomwiki')
 
 
-- logname=u"Developer_Log"
+- logname=u"Server_admin_log"
 Full page name of the page on the choosen wiki on which the "!log"-messages are stored.
 Spaces should be converted to underscores.
 Before the bot is first ran this page should contain the following wikitext:
@@ -62,7 +62,7 @@ Before the bot is first ran this page should contain the following wikitext:
 
 This may be removed after the first successful save has been made
 
-- rightsname=u"Rights_Log"
+- rightsname=u"Rights_log"
 Full page name of the page where the "!rights"-messages are stored.
 Before the bot is first ran this page should contain the following wikitext:
 
@@ -70,4 +70,3 @@ Before the bot is first ran this page should contain the following wikitext:
 	* 00:00 Foobar: Hello world.
 
 This may be removed after the first successful save has been made
-
