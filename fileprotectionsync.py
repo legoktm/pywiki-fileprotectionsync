@@ -5,16 +5,16 @@
 # the target page on the repository wiki should have cascading sysop-protection.
 #
 # @author Betacommand
-# @maintainer Krinkle
+# @author Krinkle
 # @license CC-BY-SA 3.0
-# @revision 17 (2012-03-18)
+# @revision 18 (2012-04-34)
 #
 import wikipedia
 import urllib
 import simplejson
 commons_site = wikipedia.getSite('commons','commons')
 config_data = {
-  'summary': u'Update [[Commons:Auto-protected files|auto-protection]] (BOT - r17)',
+  'summary': u'Update [[Commons:Auto-protected files|auto-protection]] (BOT - r18)',
   'text_start': u'{{Auto-protected files gallery}}<gallery widths="50" heights="30">\n',
   'text_end': u'</gallery>'
 }
@@ -23,6 +23,12 @@ config_wikis = [
     'sourcewiki': u'en.wikipedia.org',
     'sourcepages': [u'Main Page',u'Wikipedia:Main Page/Tomorrow'],
 #    'targetpage': u'Commons:Auto-protected files/wikipedia/en',
+    'targetpage': u'Commons:Sandbox',
+  },
+  {
+    'sourcewiki': u'pl.wikipedia.org',
+    'sourcepages': [u'Strona główna'],
+#    'targetpage': u'Commons:Auto-protected files/wikipedia/pl',
     'targetpage': u'Commons:Sandbox',
   },
   {
