@@ -7,14 +7,14 @@
 # @author Betacommand
 # @author Krinkle
 # @license CC-BY-SA 3.0
-# @revision 20 (2012-05-27)
+# @revision 21 (2012-05-27)
 #
 import wikipedia
 import urllib
 import simplejson
 import fileprotectionsync_config as config
 commons_site = wikipedia.getSite('commons','commons')
-config.editsummary += ' (BOT - r20)'
+config.editsummary += ' (BOT - r21)'
 
 def main():
   for wiki in config.wikis:
@@ -24,7 +24,7 @@ def main():
       mpimages.extend(get_images(wiki['sourcewiki'], pg))
     mpimages = sorted(set(mpimages))
     for cimage in mpimages:
-      str += u'%s\n' % cimage
+      str += u'File:%s\n' % cimage
     str += config.wikitext_end
     wikipedia.Page(commons_site, wiki['targetpage']).put(str, config.editsummary)
 
@@ -38,7 +38,10 @@ def get_images(site, title):
   images = data['query']['pages'][data['query']['pages'].keys()[0]]['images']
   for image in images:
     if image['ns'] == 6:
-      mpimages.append('File:' + image['title'].split(':', 1)[1])
+      # Extract file name (remove File namespace prefix)
+      # This allows non-English wikis to be fetched into an English wiki
+      # Datei:Awesome_collection:_The_Example_(2006).jpg -> Awesome_collection:_The_Example_(2006).jpg
+      mpimages.append(image['title'].split(':', 1)[1])
   return mpimages
 
 
