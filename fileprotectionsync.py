@@ -7,14 +7,14 @@
 # @author Betacommand
 # @author Krinkle
 # @license CC-BY-SA 3.0
-# @revision 21 (2012-05-27)
+# @revision 22 (2012-05-27)
 #
 import wikipedia
 import urllib
 import simplejson
 import fileprotectionsync_config as config
 commons_site = wikipedia.getSite('commons','commons')
-config.editsummary += ' (BOT - r21)'
+config.editsummary += ' (BOT - r22)'
 
 def main():
   for wiki in config.wikis:

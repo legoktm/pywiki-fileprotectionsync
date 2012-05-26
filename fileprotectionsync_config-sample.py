@@ -2,9 +2,15 @@
 # Configuration file for fileprotectionsync.py
 
 editsummary = u'Update [[Commons:Auto-protected files|auto-protection]]'
-wikitext_start = u'{{Auto-protected files gallery}}<gallery widths="50" heights="30">\n'
+wikitext_start = u'{{Auto-protected files gallery}}<gallery widths="80" heights="80">\n'
 wikitext_end = u'</gallery>'
 wikis = [
+  {
+    'sourcewiki': u'de.wikipedia.org',
+    'sourcepages': [u'Wikipedia:Hauptseite',u'Wikipedia:Hauptseite/Morgen'],
+#    'targetpage': u'Commons:Auto-protected files/wikipedia/de',
+    'targetpage': u'Commons:Sandbox',
+  },
   {
     'sourcewiki': u'en.wikipedia.org',
     'sourcepages': [u'Main Page',u'Wikipedia:Main Page/Tomorrow'],
