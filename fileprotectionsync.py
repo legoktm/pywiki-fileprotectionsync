@@ -7,59 +7,37 @@
 # @author Betacommand
 # @author Krinkle
 # @license CC-BY-SA 3.0
-# @revision 19 (2012-05-27)
+# @revision 20 (2012-05-27)
 #
 import wikipedia
 import urllib
 import simplejson
+import fileprotectionsync_config as config
 commons_site = wikipedia.getSite('commons','commons')
-config_data = {
-  'summary': u'Update [[Commons:Auto-protected files|auto-protection]] (BOT - r19)',
-  'text_start': u'{{Auto-protected files gallery}}<gallery widths="50" heights="30">\n',
-  'text_end': u'</gallery>'
-}
-config_wikis = [
-  {
-    'sourcewiki': u'en.wikipedia.org',
-    'sourcepages': [u'Main Page',u'Wikipedia:Main Page/Tomorrow'],
-#    'targetpage': u'Commons:Auto-protected files/wikipedia/en',
-    'targetpage': u'Commons:Sandbox',
-  },
-  {
-    'sourcewiki': u'pl.wikipedia.org',
-    'sourcepages': [u'Strona główna'],
-#    'targetpage': u'Commons:Auto-protected files/wikipedia/pl',
-    'targetpage': u'Commons:Sandbox',
-  },
-  {
-    'sourcewiki': u'zh.wikipedia.org',
-    'sourcepages': [u'Wikipedia:首页/全部',u'Wikipedia:首页/明天'],
-#    'targetpage': u'Commons:Auto-protected files/wikipedia/zh',
-    'targetpage': u'Commons:Sandbox',
-  },
-]
+config.editsummary += ' (BOT - r20)'
 
 def main():
-  for config in config_wikis:
-    str = config_data['text_start']
+  for wiki in config.wikis:
+    str = config.wikitext_start
     mpimages = []
-    for pg in config['sourcepages']:
-      mpimages.extend(get_images(config['sourcewiki'],pg))
+    for pg in wiki['sourcepages']:
+      mpimages.extend(get_images(wiki['sourcewiki'], pg))
     mpimages = sorted(set(mpimages))
     for cimage in mpimages:
-      str+=u'%s\n' % cimage
-    str+=config_data['text_end']
-    wikipedia.Page(commons_site,config['targetpage']).put(str,config_data['summary'])
-def get_images(site,title):
-  title=urllib.urlencode({'titles':title.encode('utf-8')})
+      str += u'%s\n' % cimage
+    str += config.wikitext_end
+    wikipedia.Page(commons_site, wiki['targetpage']).put(str, config.editsummary)
+
+def get_images(site, title):
+  title=urllib.urlencode({'titles': title.encode('utf-8')})
   mpimages = []
-  path = u'http://%s/w/api.php?action=query&prop=images&%s&imlimit=500&format=json' % (site,title)
+  path = u'http://%s/w/api.php?action=query&prop=images&%s&imlimit=500&format=json' % (site, title)
   tx = urllib.urlopen(path)
   json = tx.read()
   data = simplejson.loads(json)
   images = data['query']['pages'][data['query']['pages'].keys()[0]]['images']
   for image in images:
-    if image['ns']==6:
+    if image['ns'] == 6:
       mpimages.append('File:' + image['title'].split(':', 1)[1])
   return mpimages
 
