@@ -7,14 +7,14 @@
 # @author Betacommand
 # @author Krinkle
 # @license CC-BY-SA 3.0
-# @revision 18 (2012-04-34)
+# @revision 19 (2012-05-27)
 #
 import wikipedia
 import urllib
 import simplejson
 commons_site = wikipedia.getSite('commons','commons')
 config_data = {
-  'summary': u'Update [[Commons:Auto-protected files|auto-protection]] (BOT - r18)',
+  'summary': u'Update [[Commons:Auto-protected files|auto-protection]] (BOT - r19)',
   'text_start': u'{{Auto-protected files gallery}}<gallery widths="50" heights="30">\n',
   'text_end': u'</gallery>'
 }
@@ -60,7 +60,7 @@ def get_images(site,title):
   images = data['query']['pages'][data['query']['pages'].keys()[0]]['images']
   for image in images:
     if image['ns']==6:
-      mpimages.append(image['title'])
+      mpimages.append('File:' + image['title'].split(':', 1)[1])
   return mpimages
 
 
