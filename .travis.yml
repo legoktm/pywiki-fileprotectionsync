@@ -5,4 +5,3 @@ install:
   - sudo pip install pep8
 script:
   - pep8 . --ignore=E501
-
