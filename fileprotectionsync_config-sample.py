@@ -6,7 +6,7 @@ wikitext_end = u'</gallery>'
 wikis = [
     {
         'sourcewiki': u'de.wikipedia.org',
-        'sourcepages': [u'Wikipedia:Hauptseite', u'Wikipedia:Hauptseite/Morgen'],
+        'sourcepages': [u'Wikipedia:Hauptseite', u'Wikipedia:Hauptseite/morgen'],
         #'targetpage': u'Commons:Auto-protected files/wikipedia/de',
         'targetpage': u'Commons:Sandbox',
     },
