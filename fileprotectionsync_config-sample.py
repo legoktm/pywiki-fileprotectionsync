@@ -1,3 +1,4 @@
+#-*- coding: utf-8 -*-
 # Configuration file for fileprotectionsync.py
 
 editsummary = u'Update [[Commons:Auto-protected files|auto-protection]]'
