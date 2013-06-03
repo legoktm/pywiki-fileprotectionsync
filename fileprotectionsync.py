@@ -31,7 +31,7 @@ def main():
 def get_images(site, title):
     title = urllib.urlencode({'titles': title.encode('utf-8')})
     mpimages = []
-    path = u'http://%s/w/api.php?action=query&prop=images&%s&imlimit=500&format=json' % (site, title)
+    path = u'http://%s/w/api.php?action=query&prop=images&%s&imlimit=500&redirects&format=json' % (site, title)
     tx = urllib.urlopen(path)
     json = tx.read()
     data = simplejson.loads(json)
