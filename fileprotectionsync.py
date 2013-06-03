@@ -1,3 +1,4 @@
+# -*- coding: utf-8  -*-
 # Script to create a gallery of files used on one wiki's page
 # on another wiki's wiki. Commonly used to protect files on
 # a repository wiki that are used on a local wiki. In that case
@@ -32,6 +33,7 @@ def get_images(site, title):
     title = urllib.urlencode({'titles': title.encode('utf-8')})
     mpimages = []
     path = u'http://%s/w/api.php?action=query&prop=images&%s&imlimit=500&redirects&format=json' % (site, title)
+    print path
     tx = urllib.urlopen(path)
     json = tx.read()
     data = simplejson.loads(json)
