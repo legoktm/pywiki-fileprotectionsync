@@ -1,4 +1,4 @@
-# [![Build Status](https://travis-ci.org/Krinkle/ts-krinkle-pywiki.png?branch=master)](https://travis-ci.org/Krinkle/ts-krinkle-pywiki) Krinkle's pywiki plugins
+# [![Build Status](https://travis-ci.org/Krinkle/pywiki-fileprotectionsync.png?branch=master)](https://travis-ci.org/Krinkle/pywiki-fileprotectionsync) pywiki-fileprotectionsync
 
 
 ## Setup
@@ -6,7 +6,7 @@
 Fetch code:
 ```bash
 (you in ~/src) $ git clone --depth 1 https://git.wikimedia.org/git/pywikibot/compat.git pywikibot-compat
-(you in ~/src) $ git clone https://github.com/Krinkle/ts-krinkle-pywiki.git
+(you in ~/src) $ git clone https://github.com/Krinkle/pywiki-fileprotectionsync.git
 ```
 
 Configure pywikibot:
@@ -25,13 +25,13 @@ password_file = '.pwd'
 
 Configure fileprotectionsync:
 ```bash
-(you in ~/src/ts-krinkle-pywiki) $ cp fileprotectionsync_config-sample.py fileprotectionsync_config.py
-(you in ~/src/ts-krinkle-pywiki) $ nano fileprotectionsync_config.py
+(you in ~/src/pywiki-fileprotectionsync) $ cp fileprotectionsync_config-sample.py fileprotectionsync_config.py
+(you in ~/src/pywiki-fileprotectionsync) $ nano fileprotectionsync_config.py
 
 (you in ~) $ chmod +x liveprotect-run.sh; cat liveprotect-run.sh
 #!/usr/bin/env bash
-export PYTHONPATH=$PYTHONPATH:~/src/pywikibot-compat/:~/src/ts-krinkle-pywiki/
-python $HOME/src/ts-krinkle-pywiki/fileprotectionsync.py
+export PYTHONPATH=$PYTHONPATH:~/src/pywikibot-compat/:~/src/pywiki-fileprotectionsync/
+python $HOME/src/pywiki-fileprotectionsync/fileprotectionsync.py
 
 (you in ~) $ chmod +x liveprotect-submit.sh; cat liveprotect-submit.sh
 jsub -once -N fileprotectionsync -mem 500m ~/liveprotect-run.sh
