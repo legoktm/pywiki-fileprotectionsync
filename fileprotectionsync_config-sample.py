@@ -23,6 +23,12 @@ wikis = [
         'targetpage': u'Commons:Sandbox',
     },
     {
+        'sourcewiki': u'fr.wikipedia.org',
+        'sourcepages': [u'Wikipédia:Accueil principal'],
+        # 'targetpage': u'Commons:Auto-protected files/wikipedia/fr',
+        'targetpage': u'Commons:Sandbox',
+    },
+    {
         'sourcewiki': u'pl.wikipedia.org',
         'sourcepages': [u'Strona główna'],
         # 'targetpage': u'Commons:Auto-protected files/wikipedia/pl',
