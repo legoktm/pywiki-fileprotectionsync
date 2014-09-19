@@ -1,4 +1,11 @@
-# [![Build Status](https://travis-ci.org/Krinkle/pywiki-fileprotectionsync.png?branch=master)](https://travis-ci.org/Krinkle/pywiki-fileprotectionsync) pywiki-fileprotectionsync
+[![Build Status](https://travis-ci.org/Krinkle/pywiki-fileprotectionsync.svg?branch=master)](https://travis-ci.org/Krinkle/pywiki-fileprotectionsync)
+
+# pywiki-fileprotectionsync
+
+## Production
+
+* [User:KrinkleBot at Wikimedia Commons](https://commons.wikimedia.org/wiki/User:KrinkleBot)
+* [Commons:Auto-protected files](https://commons.wikimedia.org/wiki/Commons:Auto-protected_files)
 
 
 ## Setup
