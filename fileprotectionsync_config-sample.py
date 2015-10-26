@@ -40,4 +40,10 @@ wikis = [
         # 'targetpage': u'Commons:Auto-protected files/wikipedia/zh',
         'targetpage': u'Commons:Sandbox',
     },
+    {
+        'sourcewiki': u'bn.wikipedia.org',
+        'sourcepages': [u'প্রধান পাত'],
+        # 'targetpage': u'Commons:Auto-protected files/wikipedia/bn',
+        'targetpage': u'Commons:Sandbox',
+    },
 ]
