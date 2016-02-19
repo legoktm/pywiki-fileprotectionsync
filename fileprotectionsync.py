@@ -7,13 +7,12 @@
 # @author Betacommand
 # @author Krinkle
 # @license CC-BY-SA 3.0
-# @revision 23 (2013-03-29)
 import wikipedia
 import urllib
 import simplejson
 import fileprotectionsync_config as config
 commons_site = wikipedia.getSite('commons', 'commons')
-config.editsummary += ' (BOT - r23)'
+config.editsummary += ' (BOT - r24)'
 
 
 def main():
@@ -32,7 +31,7 @@ def main():
 def get_images(site, title):
     title = urllib.urlencode({'titles': title.encode('utf-8')})
     mpimages = []
-    path = u'http://%s/w/api.php?action=query&prop=images&%s&imlimit=500&redirects&format=json' % (site, title)
+    path = u'https://%s/w/api.php?action=query&prop=images&%s&imlimit=500&redirects&format=json' % (site, title)
     print path
     tx = urllib.urlopen(path)
     json = tx.read()
