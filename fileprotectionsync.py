@@ -7,16 +7,17 @@
 # @author Betacommand
 # @author Krinkle
 # @license CC-BY-SA 3.0
-import wikipedia
+import pywikibot
 import urllib
-import simplejson
+import json
 import fileprotectionsync_config as config
-commons_site = wikipedia.getSite('commons', 'commons')
+commons_site = pywikibot.Site('commons', 'commons')
 config.editsummary += ' (BOT - r24)'
 
 
 def main():
     for wiki in config.wikis:
+        # FIXME: don't override built-in `str`
         str = config.wikitext_start
         mpimages = []
         for pg in wiki['sourcepages']:
@@ -25,17 +26,18 @@ def main():
         for cimage in mpimages:
             str += u'File:%s\n' % cimage
         str += config.wikitext_end
-        wikipedia.Page(commons_site, wiki['targetpage']).put(str, config.editsummary)
+        pywikibot.Page(commons_site, wiki['targetpage']).put(str, config.editsummary)
 
 
 def get_images(site, title):
+    # TODO: Use pywikibot's built-in API stuff instead of this
     title = urllib.urlencode({'titles': title.encode('utf-8')})
     mpimages = []
     path = u'https://%s/w/api.php?action=query&prop=images&%s&imlimit=500&redirects&format=json' % (site, title)
     print path
     tx = urllib.urlopen(path)
-    json = tx.read()
-    data = simplejson.loads(json)
+    json_resp = tx.read()
+    data = json.loads(json_resp)
     images = data['query']['pages'][data['query']['pages'].keys()[0]]['images']
     for image in images:
         if image['ns'] == 6:
@@ -47,7 +49,4 @@ def get_images(site, title):
 
 
 if __name__ == '__main__':
-        try:
-                main()
-        finally:
-                wikipedia.stopme()
+        main()
