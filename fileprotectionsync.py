@@ -36,8 +36,8 @@ def get_images(site, title):
     path = u'https://%s/w/api.php?action=query&prop=images&%s&imlimit=500&redirects&format=json' % (site, title)
     print path
     tx = urllib.urlopen(path)
-    json = tx.read()
-    data = json.loads(json)
+    json_resp = tx.read()
+    data = json.loads(json_resp)
     images = data['query']['pages'][data['query']['pages'].keys()[0]]['images']
     for image in images:
         if image['ns'] == 6:
