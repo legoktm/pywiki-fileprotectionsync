@@ -4,48 +4,61 @@
 
 ## Production
 
-* [User:KrinkleBot at Wikimedia Commons](https://commons.wikimedia.org/wiki/User:KrinkleBot)
+* [User:KrinkleBot](https://commons.wikimedia.org/wiki/User:KrinkleBot)
 * [Commons:Auto-protected files](https://commons.wikimedia.org/wiki/Commons:Auto-protected_files)
 
 
 ## Setup
 
 Fetch code:
+
 ```bash
-# (you in ~/src)
-$ git clone --depth 1 https://git.wikimedia.org/git/pywikibot/compat.git pywikibot-compat
+# (tooluser in ~/src)
+$ git clone --depth 1 https://github.com/wikimedia/pywikibot-core.git
 $ git clone https://github.com/Krinkle/pywiki-fileprotectionsync.git
 ```
 
-Configure pywikibot:
-```bash
-# (you in ~/src/pywikibot-compat)
-$ cat .pwd
-**
+Configure user:
 
-$ cat user-config.py
-# -*- coding: utf-8  -*-
-family = 'commons'
-mylang = 'commons'
-usernames['commons']['commons'] = u'KrinkleBot'
-sysopnames['commons']['commons'] = u'KrinkleBot'
-password_file = '.pwd'
+```bash
+$ mkdir -p ~/.pywikibot && chmod 700 ~/.pywikibot
+$ touch ~/.pywikibot/{.pwd,user-config.py} && chmod 600 ~/.pywikibot/{.pwd,user-config.py}
+$ edit ~/.pywikibot/user-config.py
+	# -*- coding: utf-8  -*-
+	import os
+	family = 'commons'
+	mylang = 'commons'
+	usernames['commons']['commons'] = u'KrinkleBot'
+	sysopnames['commons']['commons'] = u'KrinkleBot'
+	password_file = os.path.expanduser('~/.pywikibot/.pwd')
+$ edit ~/.pywikibot/.pwd
+("<username>", "<password>")
+```
+
+Install pywikibot:
+
+```bash
+# (tooluser in ~/)
+$ virtualenv pywiki
+$ source ~/pywiki/bin/activate
+$ cd ~/src/pywikibot-core
+$ python setup.py develop
 ```
 
 Configure fileprotectionsync:
+
 ```bash
 # (you in ~/src/pywiki-fileprotectionsync)
 $ cp fileprotectionsync_config-sample.py fileprotectionsync_config.py
-$ $EDITOR fileprotectionsync_config.py
+$ edit fileprotectionsync_config.py
 
 # (you in ~/)
-$ cat liveprotect-run.sh 
-#!/usr/bin/env bash
-export PYTHONPATH=$PYTHONPATH:~/src/pywikibot-compat/:~/src/ts-krinkle-pywiki/
-python $HOME/src/ts-krinkle-pywiki/fileprotectionsync.py
+$ edit crontab.txt
+0,15,30,45 * * * * /usr/bin/jsub -once -quiet -l release=trusty -mem 500m -N fileprotectionsync $HOME/pywiki/bin/python $HOME/src/pywiki-fileprotectionsync/fileprotectionsync.py
+```
 
-$ chmod +x liveprotect-run.sh
+To run it manually:
 
-$ cat crontab.txt
-0,15,30,45 * * * * /usr/bin/jsub -N fileprotectionsync -once -quiet -mem 500m ~/liveprotect-run.sh
+```bash
+$ $HOME/pywiki/bin/python $HOME/src/pywiki-fileprotectionsync/fileprotectionsync.py
 ```
