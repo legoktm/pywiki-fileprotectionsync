@@ -32,7 +32,7 @@ $ edit ~/.pywikibot/user-config.py
 	sysopnames['commons']['commons'] = u'KrinkleBot'
 	password_file = os.path.expanduser('~/.pywikibot/.pwd')
 $ edit ~/.pywikibot/.pwd
-("<username>", "<password>")
+("<username>", BotPassword("<botname>", "<password>"))
 ```
 
 Install pywikibot:
