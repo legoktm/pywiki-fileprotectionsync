@@ -49,8 +49,7 @@ Configure fileprotectionsync:
 
 ```bash
 # (you in ~/src/pywiki-fileprotectionsync)
-$ cp fileprotectionsync_config-sample.py fileprotectionsync_config.py
-$ edit fileprotectionsync_config.py
+$ ln -sf fileprotectionsync_config.py fileprotectionsync_config-prod.py
 
 # (you in ~/)
 $ edit crontab.txt

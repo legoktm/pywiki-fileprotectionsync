@@ -1,39 +1,38 @@
 # -*- coding: utf-8  -*-
-# Script to create a gallery of files used on one wiki's page
-# on another wiki's wiki. Commonly used to protect files on
-# a repository wiki that are used on a local wiki. In that case
-# the target page on the repository wiki should have cascading sysop-protection.
+# Script to create a gallery of files used on one or more pages on
+# another wiki. Main purpose being to automatically protect files
+# from a central repository that are used on a local wiki's main page.
+# For this to work, the gallery page must have cascading protection as well.
 #
 # @author Betacommand
 # @author Krinkle
 # @license CC-BY-SA 3.0
-import pywikibot
-import urllib
 import json
+import urllib
+
 import fileprotectionsync_config as config
+import pywikibot
 commons_site = pywikibot.Site('commons', 'commons')
-config.editsummary += ' (BOT - r24)'
 
 
 def main():
     for wiki in config.wikis:
-        # FIXME: don't override built-in `str`
-        str = config.wikitext_start
+        wt = config.wikitext_start
         mpimages = []
         for pg in wiki['sourcepages']:
             mpimages.extend(get_images(wiki['sourcewiki'], pg))
         mpimages = sorted(set(mpimages))
         for cimage in mpimages:
-            str += u'File:%s\n' % cimage
-        str += config.wikitext_end
-        pywikibot.Page(commons_site, wiki['targetpage']).put(str, config.editsummary)
+            wt += 'File:%s\n' % cimage
+        wt += config.wikitext_end
+        pywikibot.Page(commons_site, wiki['targetpage']).put(wt, config.editsummary)
 
 
 def get_images(site, title):
     # TODO: Use pywikibot's built-in API stuff instead of this
-    title = urllib.urlencode({'titles': title.encode('utf-8')})
+    title = urllib.urlencode({'titles': title})
     mpimages = []
-    path = u'https://%s/w/api.php?action=query&prop=images&%s&imlimit=500&redirects&format=json' % (site, title)
+    path = 'https://%s/w/api.php?action=query&prop=images&%s&imlimit=500&redirects&format=json' % (site, title)
     print path
     tx = urllib.urlopen(path)
     json_resp = tx.read()
