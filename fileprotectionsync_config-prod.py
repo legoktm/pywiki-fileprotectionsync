@@ -47,7 +47,7 @@ wikis = [
     },
     {
         'sourcewiki': 'he.wikipedia.org',
-        'sourcepages': ['עמוד ראשי'],
+        'sourcepages': ['עמוד ראשי', 'ויקיפדיה:עמוד ראשי/מחר'],
         'targetpage': 'Commons:Auto-protected files/wikipedia/he',
     },
 ]
