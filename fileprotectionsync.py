@@ -7,6 +7,8 @@
 # @author Betacommand
 # @author Krinkle
 # @license CC-BY-SA 3.0
+from __future__ import print_function
+import sys
 import json
 import urllib
 
@@ -37,7 +39,11 @@ def get_images(site, title):
     tx = urllib.urlopen(path)
     json_resp = tx.read()
     data = json.loads(json_resp)
-    images = data['query']['pages'][data['query']['pages'].keys()[0]]['images']
+    try:
+        images = data['query']['pages'][data['query']['pages'].keys()[0]]['images']
+    catch KeyError:
+        print('Error: Page "%s" not found on %s' % (title, site), file=sys.stderr)
+        images = []
     for image in images:
         if image['ns'] == 6:
             # Extract file name (remove File namespace prefix)
