@@ -41,7 +41,7 @@ def get_images(site, title):
     data = json.loads(json_resp)
     try:
         images = data['query']['pages'][data['query']['pages'].keys()[0]]['images']
-    catch KeyError:
+    except KeyError:
         print('Error: Page "%s" not found on %s' % (title, site), file=sys.stderr)
         images = []
     for image in images:
