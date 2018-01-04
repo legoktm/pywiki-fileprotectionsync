@@ -5,6 +5,6 @@ python:
   - "3.4"
   - "2.7"
 install:
-  - pip install pylint
+  - pip install flake8
 script:
-  - pylint .
+  - flake8 --ignore=E501 .
