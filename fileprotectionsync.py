@@ -43,7 +43,7 @@ def get_images(site, title):
         images = data['query']['pages'][data['query']['pages'].keys()[0]]['images']
     except KeyError:
         print('Error: Page "%s" not found on %s' % (title, site), file=sys.stderr)
-        images = []
+        return mpimages
     for image in images:
         if image['ns'] == 6:
             # Extract file name (remove File namespace prefix)
