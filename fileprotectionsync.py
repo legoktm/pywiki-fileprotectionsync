@@ -33,7 +33,7 @@ def get_images(site, title):
     title = urllib.urlencode({'titles': title})
     mpimages = []
     path = 'https://%s/w/api.php?action=query&prop=images&%s&imlimit=500&redirects&format=json' % (site, title)
-    print path
+    print(path)
     tx = urllib.urlopen(path)
     json_resp = tx.read()
     data = json.loads(json_resp)
